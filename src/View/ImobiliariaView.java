@@ -82,6 +82,7 @@ public class ImobiliariaView extends javax.swing.JFrame {
         btnIrParaImoveis.setText("Ir para Imóveis");
         btnIrParaImoveis.setFocusPainted(false);
         btnIrParaImoveis.setFocusable(false);
+        btnIrParaImoveis.addActionListener(this::btnIrParaImoveisActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -107,16 +108,40 @@ public class ImobiliariaView extends javax.swing.JFrame {
         txtNomeImobiliaria.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtNomeImobiliaria.setText("Digite o nome");
         txtNomeImobiliaria.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtNomeImobiliaria.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeImobiliariaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeImobiliariaFocusLost(evt);
+            }
+        });
 
         txtContato.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtContato.setText("Nome do responsável");
         txtContato.setToolTipText("");
         txtContato.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtContato.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContatoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContatoFocusLost(evt);
+            }
+        });
 
         txtTelefone.setFont(new java.awt.Font("Nirmala UI", 0, 14)); // NOI18N
         txtTelefone.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtTelefone.setText("(00) 00000-0000");
         txtTelefone.setMargin(new java.awt.Insets(2, 10, 2, 6));
+        txtTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefoneFocusLost(evt);
+            }
+        });
 
         btnConsultar.setFont(new java.awt.Font("Nirmala UI", 0, 18)); // NOI18N
         btnConsultar.setText("Consultar Catálogo");
@@ -228,6 +253,41 @@ public class ImobiliariaView extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtNomeImobiliariaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeImobiliariaFocusGained
+        if (txtNomeImobiliaria.getText().equals("Digite o nome")) 
+            txtNomeImobiliaria.setText("");
+    }//GEN-LAST:event_txtNomeImobiliariaFocusGained
+    private void txtNomeImobiliariaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeImobiliariaFocusLost
+        if (txtNomeImobiliaria.getText().isEmpty()) 
+            txtNomeImobiliaria.setText("Digite o nome");
+    }//GEN-LAST:event_txtNomeImobiliariaFocusLost
+
+    private void txtTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusGained
+        if (txtTelefone.getText().equals("(00) 00000-0000")) 
+            txtTelefone.setText("");
+        
+    }//GEN-LAST:event_txtTelefoneFocusGained
+    private void txtTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusLost
+        if (txtTelefone.getText().isEmpty()) 
+            txtTelefone.setText("(00) 00000-0000");
+        
+    }//GEN-LAST:event_txtTelefoneFocusLost
+
+    private void txtContatoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContatoFocusGained
+        if(txtContato.getText().equals("Nome do responsável")) 
+            txtContato.setText("");
+    }//GEN-LAST:event_txtContatoFocusGained
+    private void txtContatoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContatoFocusLost
+        if (txtContato.getText().isEmpty()) 
+            txtContato.setText("Nome do responsável");
+    }//GEN-LAST:event_txtContatoFocusLost
+
+    private void btnIrParaImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrParaImoveisActionPerformed
+        ImovelView imovelView = new ImovelView();
+        imovelView.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnIrParaImoveisActionPerformed
 
     public static void main(String args[]) {
 
